@@ -561,17 +561,11 @@ class Game {
     };
 
     #restart() {
-        this.#enemies.forEach(enemy => {
-            enemy.setStrategy('attack', null);
-            enemy.setStrategy('move', null);
-            enemy.setStrategy('die', null);
-            enemy.dispose();
-        });
+        this.#enemies.forEach(enemy => enemy.dispose());
         this.#enemies = [];
         
         if(this.#player) {
-            this.#player.setStrategy('attack', null);
-            this.#player.setStrategy('die', null);
+            this.#player.dispose();
             this.#player = null;
         };
 
